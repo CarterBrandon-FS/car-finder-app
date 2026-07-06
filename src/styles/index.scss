@@ -1,0 +1,136 @@
+/*-----SCSS VARIABLES-----*/
+$primary-header: #ffffff;
+$subtext: #d3d3d3;
+$form-panel-bg: #f2f2f2;
+$form-blue: #348fbc;
+$form-disabled: #909090;
+$selected-option: #212121;
+
+$font-main: "Open Sans", sans-serif;
+$radius-input: 6px;
+
+/*-----SCSS MIXINS-----*/
+// Reusable flexbox mixin with default arguments
+@mixin flex-layout($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/*-----GLOBAL RESETS & BACKGROUND-----*/
+body {
+  margin: 0;
+  font-family: $font-main;
+  font-weight: 500;
+}
+
+.app-container {
+  background-image: url("../car-finder-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 20px;
+
+  // Injecting the mixin for a column layout
+  @include flex-layout(column, center, center);
+}
+
+/*-----TYPOGRAPHY-----*/
+.app-header {
+  color: $primary-header;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+
+  // Standard SCSS nesting
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: $subtext;
+  }
+}
+
+/*-----FORM PANEL LAYOUT-----*/
+.form-panel {
+  background-color: $form-panel-bg;
+  border-radius: 12px;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 900px;
+
+  // Injecting the mixin for a row layout
+  @include flex-layout(row, flex-start, stretch);
+}
+
+.form-group {
+  flex: 1;
+  padding: 0 30px;
+  border-right: 1px solid $subtext;
+
+  // Using the parent selector (&)
+  &:last-child {
+    border-right: none;
+  }
+
+  .group-title {
+    color: $form-blue;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    // & equals .group-title.disabled
+    &.disabled {
+      color: $form-disabled;
+    }
+  }
+}
+
+/*----OUTLINED INPUT BOX EFFECT----*/
+.input-wrapper {
+  position: relative;
+  margin-top: 15px;
+
+  // Nesting the select box directly inside the wrapper rule
+  select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid $form-blue;
+    border-radius: $radius-input;
+    font-size: 1rem;
+    background-color: transparent;
+    color: $selected-option;
+    appearance: auto;
+    cursor: pointer;
+    outline: none;
+
+    // & equals .input-wrapper select:disabled
+    &:disabled {
+      border-color: $subtext;
+      color: $form-disabled;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.floating-label {
+  position: absolute;
+  top: -9px;
+  left: 10px;
+  background-color: $form-panel-bg;
+  padding: 0 5px;
+  font-size: 0.85rem;
+  color: $form-blue;
+  z-index: 5;
+
+  &.disabled {
+    color: $subtext;
+  }
+}

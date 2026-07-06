@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New ES6/SCSS Project</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <h1>Car Finder</h1>
+        <p>
+          Looking for your dream vehicle? Use <br />the form below to find the
+          car of your dreams.
+        </p>
+      </header>
+
+      <main class="form-panel">
+        <div class="form-group">
+          <h2 class="group-title">Year</h2>
+          <div class="input-wrapper">
+            <label for="yearSelect" class="floating-label">Year</label>
+            <select id="yearSelect">
+              <option value="">Vehicle Year</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h2 class="group-title disabled" id="makeTitle">Make</h2>
+          <div class="input-wrapper">
+            <label
+              for="makeSelect"
+              class="floating-label disabled"
+              id="makeLabel"
+              >Make</label
+            >
+            <select id="makeSelect" disabled>
+              <option value="">Vehicle Make</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h2 class="group-title disabled" id="modelTitle">Model</h2>
+          <div class="input-wrapper">
+            <label
+              for="modelSelect"
+              class="floating-label disabled"
+              id="modelLabel"
+              >Model</label
+            >
+            <select id="modelSelect" disabled>
+              <option value="">Vehicle Model</option>
+            </select>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>
