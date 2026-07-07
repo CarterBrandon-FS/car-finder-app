@@ -73,7 +73,9 @@ class CarFinder {
 
     // Filter cars by the chosen year to get the makes
     const carsForYear = this.#cars.filter((car) => car.year == selectedYear);
-    const uniqueMakes = [...new Set(carsForYear.map((car) => car.make))].sort();
+    const uniqueMakes = [
+      ...new Set(carsForYear.map((car) => car.Manufacturer)),
+    ].sort();
 
     console.log("1. The year you clicked:", selectedYear);
     console.log("2. Cars found for this year:", carsForYear);
@@ -106,7 +108,7 @@ class CarFinder {
 
     // Filter cars by both the year and make to get specific model
     const matchingCars = this.#cars.filter(
-      (car) => car.year == selectedYear && car.make === selectedMake,
+      (car) => car.year == selectedYear && car.Manufacturer === selectedMake,
     );
     const uniqueModels = [
       ...new Set(matchingCars.map((car) => car.model)),
@@ -133,7 +135,7 @@ class CarFinder {
     const selectedCar = this.#cars.find(
       (car) =>
         car.year == this.#yearSelect.value &&
-        car.make === this.#makeSelect.value &&
+        car.Manufacturer === this.#makeSelect.value &&
         car.model === selectedModel,
     );
 
